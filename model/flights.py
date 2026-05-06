@@ -1,0 +1,27 @@
+from dataclasses import dataclass
+from datetime import datetime
+
+
+@dataclass
+class Flight:
+    ID: int
+    AIRLINE_ID: int
+    FLIGHT_NUMBER: int
+    TAIL_NUMBER: str
+    ORIGIN_AIRPORT_ID: datetime
+    DESTINATION_AIRPORT_ID: int
+    SCHEDULED_DEPARTURE_DATE: int
+    DEPARTURE_DELAY: float
+    ELAPSED_TIME: float
+    DISTANCE: int
+    ARRIVAL_DATE: datetime
+    ARRIVAL_DELAY: float
+
+    def __hash__(self):
+        return hash(self.ID)
+
+    def __eq__(self, other):
+        return self.ID == other.ID
+
+    def __str__(self):
+        return f"Aeroporto di partenza: {self.ORIGIN_AIRPORT_ID} - Aeroporto di destinazione: {self.DESTINATION_AIRPORT_ID} --- Distanza: {self.DISTANCE}"
